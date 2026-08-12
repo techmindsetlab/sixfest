@@ -327,8 +327,73 @@ function slugify(s: string) {
           </div>
         </div>
         <div class="bg-editorial">
-          <p class="mono bg-type-sample__label">Editorial Layout Example</p>
-          <div class="bg-placeholder__block bg-placeholder__block--tall"></div>
+          <p class="mono bg-type-sample__label">Editorial Layout Example — Key Visual</p>
+          <div class="bg-kv-grid">
+
+            <!-- KV 1: Bone 16:9 -->
+            <div class="bg-kv bg-kv--16x9 bg-kv--bone">
+              <div class="bg-kv__pixel bg-kv__pixel--tr"></div>
+              <div class="bg-kv__pixel bg-kv__pixel--bl"></div>
+              <div class="bg-kv__dither bg-kv__dither--tr"></div>
+              <div class="bg-kv__dither bg-kv__dither--bl"></div>
+              <div class="bg-kv__content">
+                <div class="bg-kv__text">
+                  <p class="bg-kv__label">SIXFEST presents</p>
+                  <h3 class="bg-kv__title"><span class="bg-kv__re">Re</span><span class="bg-kv__colon">:</span><span class="bg-kv__connect">connect</span></h3>
+                </div>
+                <div class="bg-kv__speaker">
+                  <div class="bg-kv__speaker-placeholder"></div>
+                </div>
+              </div>
+              <div class="bg-kv__tag">
+                <span class="bg-kv__tag-date">10 December 2026</span>
+                <span class="bg-kv__tag-time">11am</span>
+              </div>
+            </div>
+
+            <!-- KV 2: Magenta 3:4 -->
+            <div class="bg-kv bg-kv--3x4 bg-kv--magenta">
+              <div class="bg-kv__pixel bg-kv__pixel--tr"></div>
+              <div class="bg-kv__pixel bg-kv__pixel--bl"></div>
+              <div class="bg-kv__dither bg-kv__dither--tr"></div>
+              <div class="bg-kv__dither bg-kv__dither--bl"></div>
+              <div class="bg-kv__content bg-kv__content--vertical">
+                <div class="bg-kv__text">
+                  <p class="bg-kv__label">SIXFEST presents</p>
+                  <h3 class="bg-kv__title"><span class="bg-kv__re">Re</span><span class="bg-kv__colon bg-kv__colon--dark">:</span><span class="bg-kv__connect">connect</span></h3>
+                </div>
+                <div class="bg-kv__speaker">
+                  <div class="bg-kv__speaker-placeholder"></div>
+                </div>
+              </div>
+              <div class="bg-kv__tag bg-kv__tag--light">
+                <span class="bg-kv__tag-date">10 December 2026</span>
+                <span class="bg-kv__tag-time">1pm</span>
+              </div>
+            </div>
+
+            <!-- KV 3: Bone 16:9 -->
+            <div class="bg-kv bg-kv--16x9 bg-kv--bone">
+              <div class="bg-kv__pixel bg-kv__pixel--tr"></div>
+              <div class="bg-kv__pixel bg-kv__pixel--bl"></div>
+              <div class="bg-kv__dither bg-kv__dither--tr"></div>
+              <div class="bg-kv__dither bg-kv__dither--bl"></div>
+              <div class="bg-kv__content">
+                <div class="bg-kv__text">
+                  <p class="bg-kv__label">SIXFEST presents</p>
+                  <h3 class="bg-kv__title"><span class="bg-kv__re">Re</span><span class="bg-kv__colon">:</span><span class="bg-kv__connect">connect</span></h3>
+                </div>
+                <div class="bg-kv__speaker">
+                  <div class="bg-kv__speaker-placeholder"></div>
+                </div>
+              </div>
+              <div class="bg-kv__tag">
+                <span class="bg-kv__tag-date">10 December 2026</span>
+                <span class="bg-kv__tag-time">11am</span>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -883,6 +948,221 @@ function slugify(s: string) {
   .bg-editorial {
     border-top: 1px solid rgba(245, 241, 232, 0.1);
     padding-top: 40px;
+  }
+
+  /* ── Key Visual ── */
+  .bg-kv-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 24px;
+  }
+  .bg-kv {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .bg-kv--16x9 {
+    aspect-ratio: 16 / 9;
+  }
+  .bg-kv--3x4 {
+    aspect-ratio: 3 / 4;
+    max-width: 480px;
+  }
+  .bg-kv--bone {
+    background: var(--bone);
+    color: var(--ink);
+  }
+  .bg-kv--magenta {
+    background: #FE2495;
+    color: var(--ink);
+  }
+
+  /* Pixel accent blocks */
+  .bg-kv__pixel {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: #FE2495;
+  }
+  .bg-kv--magenta .bg-kv__pixel {
+    background: var(--ink);
+  }
+  .bg-kv__pixel--tr {
+    top: 24px;
+    right: 24px;
+  }
+  .bg-kv__pixel--bl {
+    bottom: 80px;
+    left: 40%;
+  }
+
+  /* Dither pattern accents */
+  .bg-kv__dither {
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    background-image: repeating-conic-gradient(var(--ink) 0% 25%, transparent 0% 50%);
+    background-size: 4px 4px;
+    opacity: 0.35;
+  }
+  .bg-kv--magenta .bg-kv__dither {
+    background-image: repeating-conic-gradient(var(--bone) 0% 25%, transparent 0% 50%);
+    opacity: 0.5;
+  }
+  .bg-kv__dither--tr {
+    top: 0;
+    right: 80px;
+  }
+  .bg-kv__dither--bl {
+    bottom: 60px;
+    left: 24px;
+  }
+
+  /* Content layout */
+  .bg-kv__content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex: 1;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .bg-kv__content--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .bg-kv__text {
+    flex: 1;
+    max-width: 55%;
+  }
+  .bg-kv__content--vertical .bg-kv__text {
+    max-width: 100%;
+  }
+  .bg-kv__label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  .bg-kv__title {
+    font-size: clamp(28px, 5vw, 56px);
+    line-height: 0.92;
+  }
+  .bg-kv__re {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+  .bg-kv__colon {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-style: italic;
+    color: #FE2495;
+  }
+  .bg-kv__colon--dark {
+    color: var(--ink);
+  }
+  .bg-kv__connect {
+    font-family: var(--font-bit);
+    font-weight: 700;
+    font-size: 1.55em;
+    letter-spacing: -0.02em;
+  }
+
+  /* Speaker placeholder */
+  .bg-kv__speaker {
+    flex-shrink: 0;
+  }
+  .bg-kv__speaker-placeholder {
+    width: 180px;
+    height: 220px;
+    background: rgba(10, 10, 10, 0.08);
+    border-radius: 8px;
+    border: 2px dashed rgba(10, 10, 10, 0.2);
+  }
+  .bg-kv--magenta .bg-kv__speaker-placeholder {
+    background: rgba(10, 10, 10, 0.12);
+    border-color: rgba(10, 10, 10, 0.3);
+  }
+  .bg-kv__content--vertical .bg-kv__speaker-placeholder {
+    width: 100%;
+    height: 240px;
+  }
+
+  /* Tag label — glitch outline style */
+  .bg-kv__tag {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 2px solid var(--ink);
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+    font-family: var(--font-bit);
+    font-weight: 700;
+    animation: kv-tag-glitch 3s steps(2) infinite;
+  }
+  .bg-kv__tag--light {
+    border-color: var(--bone);
+    color: var(--bone);
+  }
+  .bg-kv__tag-date {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .bg-kv__tag-time {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+  @keyframes kv-tag-glitch {
+    0%, 90% { transform: translate(0); }
+    92% { transform: translate(-2px, 1px); }
+    94% { transform: translate(2px, -1px); }
+    96% { transform: translate(-1px, -1px); }
+    98% { transform: translate(1px, 0); }
+    100% { transform: translate(0); }
+  }
+
+  @media (max-width: 768px) {
+    .bg-kv {
+      padding: 24px;
+    }
+    .bg-kv--3x4 {
+      max-width: 100%;
+    }
+    .bg-kv__content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .bg-kv__text {
+      max-width: 100%;
+    }
+    .bg-kv__speaker-placeholder {
+      width: 100%;
+      height: 160px;
+    }
+    .bg-kv__pixel {
+      width: 32px;
+      height: 32px;
+    }
+    .bg-kv__dither {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   /* ── Social ── */
