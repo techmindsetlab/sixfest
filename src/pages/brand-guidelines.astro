@@ -1,0 +1,891 @@
+---
+import Base from '../layouts/Base.astro';
+
+const toc = [
+  {
+    no: '01',
+    title: 'Brand Foundation',
+    subs: ['Mission & Vision', 'Brand Personality', 'Brand Voice & Tone'],
+  },
+  {
+    no: '02',
+    title: 'Visual Identity',
+    subs: ['Logo & Symbol', 'Color Palette', 'Typography'],
+  },
+  {
+    no: '03',
+    title: 'Design Elements',
+    subs: ['Shape & Accents', 'Color Application', 'Text Styling'],
+  },
+  {
+    no: '04',
+    title: 'Application',
+    subs: ['Social Media', 'Merchandise'],
+  },
+];
+
+function slugify(s: string) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+---
+
+<Base title="Brand Guidelines — SIXFEST">
+  <header class="bg-header container">
+    <a class="brand" href="/">
+      <span class="brand__mark">6</span>
+      <span class="brand__name">SIXFEST</span>
+    </a>
+    <span class="mono bg-header__ver">V 1.0 — 2026</span>
+  </header>
+
+  <main>
+    <!-- ════════ HERO ════════ -->
+    <section class="bg-hero">
+      <div class="bg-hero__gradient"></div>
+      <div class="bg-hero__inner container">
+        <p class="mono bg-hero__label">Identitas Visual</p>
+        <h1 class="bg-hero__title">Brand<br />Guidelines</h1>
+        <p class="mono bg-hero__edition">SIXFEST — Edisi 06</p>
+      </div>
+    </section>
+
+    <!-- ════════ TOC ════════ -->
+    <section class="bg-toc container" id="toc">
+      <p class="mono section-label">Apa yang ada di dalam</p>
+      <div class="bg-toc__grid">
+        {toc.map((item) => (
+          <a class="bg-toc__card" href={`#s${item.no}`}>
+            <span class="mono bg-toc__no">{item.no}</span>
+            <h2 class="bg-toc__title">{item.title}</h2>
+            <ul class="bg-toc__subs">
+              {item.subs.map((sub) => (
+                <li>{sub}</li>
+              ))}
+            </ul>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         01 — BRAND FOUNDATION
+         ════════════════════════════════════════ -->
+    <div class="bg-divider container" id="s01">
+      <span class="mono">01</span>
+      <span class="bg-divider__line"></span>
+      <span class="mono">Brand Foundation</span>
+    </div>
+
+    <!-- 01.1 Mission & Vision -->
+    <section class="bg-section bg-section--bone" id={slugify('Mission & Vision')}>
+      <div class="container">
+        <p class="mono section-label section-label--dark">01.1 — Mission & Vision</p>
+        <div class="bg-section__body">
+          <div class="bg-placeholder bg-placeholder--text">
+            <p class="bg-placeholder__label bg-placeholder__label--dark mono">Mission statement</p>
+            <div class="bg-placeholder__block bg-placeholder__block--on-bone" style="height:80px;"></div>
+          </div>
+          <div class="bg-placeholder bg-placeholder--text">
+            <p class="bg-placeholder__label bg-placeholder__label--dark mono">Vision statement</p>
+            <div class="bg-placeholder__block bg-placeholder__block--on-bone" style="height:80px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01.2 Brand Personality -->
+    <section class="bg-section container" id={slugify('Brand Personality')}>
+      <p class="mono section-label">01.2 — Brand Personality</p>
+      <div class="bg-section__body">
+        <div class="bg-traits">
+          {['Kreatif', 'Kolaboratif', 'Berani', 'Autentik'].map((trait) => (
+            <div class="bg-trait">
+              <h3 class="bg-trait__title">{trait}</h3>
+              <div class="bg-placeholder__block" style="height:48px;"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 01.3 Brand Voice & Tone -->
+    <section class="bg-section container" id={slugify('Brand Voice & Tone')}>
+      <p class="mono section-label">01.3 — Brand Voice & Tone</p>
+      <div class="bg-section__body">
+        <div class="bg-voice">
+          <div class="bg-voice__col bg-voice__col--do">
+            <p class="mono bg-voice__heading">Lakukan ini</p>
+            {[1, 2, 3, 4].map(() => (
+              <div class="bg-placeholder__block" style="height:40px;margin-bottom:12px;"></div>
+            ))}
+          </div>
+          <div class="bg-voice__col bg-voice__col--dont">
+            <p class="mono bg-voice__heading">Jangan ini</p>
+            {[1, 2, 3, 4].map(() => (
+              <div class="bg-placeholder__block bg-placeholder__block--alt" style="height:40px;margin-bottom:12px;"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         02 — VISUAL IDENTITY
+         ════════════════════════════════════════ -->
+    <div class="bg-divider container" id="s02">
+      <span class="mono">02</span>
+      <span class="bg-divider__line"></span>
+      <span class="mono">Visual Identity</span>
+    </div>
+
+    <!-- 02.1 Logo & Symbol -->
+    <section class="bg-section bg-section--bone" id={slugify('Logo & Symbol')}>
+      <div class="container">
+        <p class="mono section-label section-label--dark">02.1 — Logo & Symbol</p>
+        <div class="bg-section__body">
+          <div class="bg-logo-hero">
+            <div class="bg-placeholder__block bg-placeholder__block--tall bg-placeholder__block--on-bone"></div>
+          </div>
+          <div class="bg-logo-grid">
+            {['Primary on Dark', 'Primary on Light', 'On Magenta', 'Symbol Only'].map((variant) => (
+              <div class="bg-logo-variant">
+                <div class={`bg-placeholder__block bg-placeholder__block--logo ${variant.includes('Light') ? 'bg-placeholder__block--on-bone' : ''}`}></div>
+                <p class="mono bg-logo-variant__label bg-logo-variant__label--dark">{variant}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02.2 Color Palette -->
+    <section class="bg-section bg-section--palette" id={slugify('Color Palette')}>
+      <div class="container">
+      <p class="mono section-label">02.2 — Color Palette</p>
+      <div class="bg-section__body">
+        <div class="bg-colors">
+          {[
+            { name: 'Ink', hex: '#0A0A0A', role: 'Primary', light: false },
+            { name: 'Magenta', hex: '#FE2495', role: 'Acid', light: false },
+            { name: 'Cyan', hex: '#00E5FF', role: 'Electric', light: false },
+            { name: 'Violet', hex: '#7A2BFF', role: 'Bridge', light: false },
+            { name: 'Bone', hex: '#F5F1E8', role: 'Texture', light: true, texture: true },
+          ].map((c) => (
+            <div class="bg-color-card">
+              <div
+                class={`bg-color-card__swatch ${c.texture ? 'bg-color-card__swatch--texture' : ''}`}
+                style={`${c.texture ? '' : `background:${c.hex};`}${c.light && !c.texture ? 'border:1px solid rgba(10,10,10,0.12);' : ''}`}
+              >
+                <span class={`mono bg-color-card__hex ${c.light ? 'bg-color-card__hex--dark' : ''}`}>{c.hex}</span>
+              </div>
+              <p class="bg-color-card__name">{c.name}</p>
+              <p class="mono bg-color-card__role">{c.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- 02.3 Typography -->
+    <section class="bg-section container" id={slugify('Typography')}>
+      <p class="mono section-label">02.3 — Typography</p>
+      <div class="bg-section__body">
+        <div class="bg-type-specimen">
+          <div class="bg-type-sample bg-type-sample--display">
+            <p class="mono bg-type-sample__label">PP Model Sans — Display (Nyata)</p>
+            <p class="bg-type-sample__text" style="font-family:var(--font-display);font-weight:900;font-size:clamp(48px,6vw,96px);text-transform:uppercase;line-height:0.95;">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            </p>
+          </div>
+          <div class="bg-type-sample bg-type-sample--maya">
+            <p class="mono bg-type-sample__label">PP Mondwest — Display (Maya)</p>
+            <p class="bg-type-sample__text" style="font-family:var(--font-maya);font-size:clamp(48px,6vw,96px);line-height:0.95;">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            </p>
+          </div>
+          <div class="bg-type-sample">
+            <p class="mono bg-type-sample__label">PP NeueBit Bold — Bitmap / UI</p>
+            <p class="bg-type-sample__text" style="font-family:var(--font-bit);font-weight:700;font-size:clamp(36px,4vw,64px);line-height:1;">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />0123456789
+            </p>
+          </div>
+          <div class="bg-type-sample">
+            <p class="mono bg-type-sample__label">PP Model Mono — Caption / Label</p>
+            <p class="bg-type-sample__text" style="font-family:var(--font-mono);font-weight:300;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ — 0123456789
+            </p>
+          </div>
+        </div>
+        <div class="bg-type-hierarchy">
+          <p class="mono bg-type-sample__label">Hierarki Heading</p>
+          {[
+            { tag: 'H1', size: 'clamp(64px, 14vw, 240px)', weight: '900', font: 'var(--font-display)' },
+            { tag: 'H2', size: 'clamp(40px, 6vw, 100px)', weight: '900', font: 'var(--font-display)' },
+            { tag: 'H3', size: 'clamp(26px, 2.6vw, 40px)', weight: '900', font: 'var(--font-display)' },
+            { tag: 'Body', size: '15px', weight: '300', font: 'var(--font-body)' },
+            { tag: 'Label', size: '13px', weight: '300', font: 'var(--font-mono)' },
+          ].map((h) => (
+            <div class="bg-type-row">
+              <span class="mono bg-type-row__tag">{h.tag}</span>
+              <span class="bg-type-row__preview" style={`font-family:${h.font};font-weight:${h.weight};font-size:min(${h.size}, 48px);line-height:1;text-transform:uppercase;`}>
+                Nyata / Maya
+              </span>
+              <span class="mono bg-type-row__spec">{h.size} · w{h.weight}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         03 — DESIGN ELEMENTS
+         ════════════════════════════════════════ -->
+    <div class="bg-divider container" id="s03">
+      <span class="mono">03</span>
+      <span class="bg-divider__line"></span>
+      <span class="mono">Design Elements</span>
+    </div>
+
+    <!-- 03.1 Shape & Accents -->
+    <section class="bg-section container" id={slugify('Shape & Accents')}>
+      <p class="mono section-label">03.1 — Shape & Accents</p>
+      <div class="bg-section__body">
+        <div class="bg-patterns">
+          {['Hero Pattern', 'Linear Fade', 'Tile — Ink'].map((name) => (
+            <div class="bg-pattern-card">
+              <div class="bg-placeholder__block bg-placeholder__block--pattern"></div>
+              <div class="bg-pattern-card__footer">
+                <p class="mono">{name}</p>
+                <button class="btn-pixel btn-pixel--sm">Download SVG</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 03.2 Color Application -->
+    <section class="bg-section container" id={slugify('Color Application')}>
+      <p class="mono section-label">03.2 — Color Application</p>
+      <div class="bg-section__body">
+        <div class="bg-color-apps">
+          {[
+            { name: 'Dominant Ink', bg: 'var(--ink)', text: 'var(--bone)' },
+            { name: 'Acid Magenta', bg: 'var(--magenta)', text: 'var(--ink)' },
+            { name: 'Electric Cyan', bg: 'var(--cyan)', text: 'var(--ink)' },
+            { name: 'Bone Surface', bg: 'var(--bone)', text: 'var(--ink)' },
+          ].map((app) => (
+            <div class="bg-color-app" style={`background:${app.bg};color:${app.text};`}>
+              <p class="mono bg-color-app__name">{app.name}</p>
+              <div class="bg-placeholder__block" style={`height:40px;background:${app.text};opacity:0.12;`}></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 03.3 Text Styling -->
+    <section class="bg-section container" id={slugify('Text Styling')}>
+      <p class="mono section-label">03.3 — Text Styling</p>
+      <div class="bg-section__body">
+        <div class="bg-text-styles">
+          <div class="bg-text-style">
+            <p class="mono bg-type-sample__label">Headline</p>
+            <p style="font-family:var(--font-display);font-weight:900;font-size:32px;text-transform:uppercase;line-height:0.95;letter-spacing:-0.02em;">
+              UPPERCASE · WEIGHT 900 · TRACKING -0.02em
+            </p>
+          </div>
+          <div class="bg-text-style">
+            <p class="mono bg-type-sample__label">Body Copy</p>
+            <p style="font-family:var(--font-body);font-weight:300;font-size:15px;line-height:1.7;">
+              Sentence case · Weight 300 · Line-height 1.7 — teks panjang menggunakan spasi baris yang lapang untuk kenyamanan baca di atas background gelap.
+            </p>
+          </div>
+          <div class="bg-text-style">
+            <p class="mono bg-type-sample__label">Label & Tag</p>
+            <p style="font-family:var(--font-mono);font-weight:300;font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">
+              UPPERCASE · MONO · TRACKED 0.06em
+            </p>
+          </div>
+        </div>
+        <div class="bg-editorial">
+          <p class="mono bg-type-sample__label">Editorial Layout Example</p>
+          <div class="bg-placeholder__block bg-placeholder__block--tall"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         04 — APPLICATION
+         ════════════════════════════════════════ -->
+    <div class="bg-divider container" id="s04">
+      <span class="mono">04</span>
+      <span class="bg-divider__line"></span>
+      <span class="mono">Application</span>
+    </div>
+
+    <!-- 04.1 Social Media -->
+    <section class="bg-section container" id={slugify('Social Media')}>
+      <p class="mono section-label">04.1 — Social Media</p>
+      <div class="bg-section__body">
+        <div class="bg-social">
+          {[
+            { name: 'Feed Carousel', ratio: '4:5', w: 280, h: 350 },
+            { name: 'Reels', ratio: '9:16', w: 180, h: 320 },
+            { name: 'Instagram Story', ratio: '9:16', w: 180, h: 320 },
+          ].map((tmpl) => (
+            <div class="bg-social-card">
+              <div class="bg-placeholder__block" style={`width:${tmpl.w}px;height:${tmpl.h}px;max-width:100%;`}></div>
+              <p class="mono bg-social-card__label">{tmpl.name} — {tmpl.ratio}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 04.2 Merchandise -->
+    <section class="bg-section container" id={slugify('Merchandise')}>
+      <p class="mono section-label">04.2 — Merchandise</p>
+      <div class="bg-section__body">
+        <div class="bg-merch">
+          {['T-Shirt', 'Tote Bag', 'Lanyard / Badge'].map((item) => (
+            <div class="bg-merch-card">
+              <div class="bg-placeholder__block bg-placeholder__block--tall"></div>
+              <p class="mono bg-merch-card__label">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-footer container mono">
+    <span>© 2026 SIXFEST</span>
+    <a href="/">Kembali ke beranda</a>
+    <span>Nyata / Maya</span>
+  </footer>
+
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll('.bg-section, .bg-toc__card, .bg-divider').forEach((el) => {
+      gsap.from(el, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' },
+      });
+    });
+  </script>
+</Base>
+
+<style>
+  .bg-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 20px;
+    mix-blend-mode: difference;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand__mark {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--font-bit);
+    font-size: 24px;
+    border-radius: 8px;
+  }
+  .brand__name {
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+  .bg-header__ver {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  /* ── Hero ── */
+  .bg-hero {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-bottom: 60px;
+  }
+  .bg-hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #0a0a0a 0%, #4a0e4e 35%, #ff2e9a 60%, #7a2bff 80%, #00e5ff 105%);
+    opacity: 0.55;
+  }
+  .bg-hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+  .bg-hero__label {
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 16px;
+  }
+  .bg-hero__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(64px, 12vw, 200px);
+    text-transform: uppercase;
+    line-height: 0.9;
+  }
+  .bg-hero__edition {
+    margin-top: 28px;
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  /* ── TOC ── */
+  .bg-toc {
+    padding-block: 100px 80px;
+  }
+  .bg-toc__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--gutter);
+  }
+  .bg-toc__card {
+    background: var(--surface);
+    border: 1px solid rgba(245, 241, 232, 0.1);
+    border-radius: 18px;
+    padding: 28px;
+    transition: border-color 0.25s;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .bg-toc__card:hover {
+    border-color: var(--cyan);
+  }
+  .bg-toc__no {
+    font-size: 12px;
+    color: var(--magenta);
+  }
+  .bg-toc__title {
+    font-weight: 900;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .bg-toc__subs {
+    list-style: none;
+    font-size: 14px;
+    opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .bg-toc__subs li::before {
+    content: '↳ ';
+    opacity: 0.5;
+  }
+
+  /* ── Dividers ── */
+  .bg-divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-block: 100px 40px;
+    font-size: 13px;
+    color: var(--magenta);
+  }
+  .bg-divider__line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  }
+
+  /* ── Sections ── */
+  .section-label {
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 40px;
+  }
+  .bg-section {
+    padding-block: 40px 80px;
+  }
+  .bg-section__body {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* ── Bone-texture sections ── */
+  .bg-section--bone {
+    background:
+      url('/img/bone-texture.jpg') repeat center / calc(100% / 10);
+    color: var(--ink);
+    padding-block: 40px 80px;
+  }
+  @media (max-width: 768px) {
+    .bg-section--bone {
+      background-size: calc(100% / 5);
+    }
+  }
+  .section-label--dark {
+    color: var(--plum);
+  }
+  .bg-placeholder__label--dark {
+    color: var(--ink);
+    opacity: 0.5;
+  }
+  .bg-placeholder__block--on-bone {
+    background: rgba(10, 10, 10, 0.08);
+    border-color: rgba(10, 10, 10, 0.15);
+  }
+  .bg-logo-variant__label--dark {
+    color: var(--ink);
+  }
+
+  /* ── Color Palette section background ── */
+  .bg-section--palette {
+    background: #FE2495;
+    padding-block: 40px 80px;
+  }
+  .bg-section--palette .section-label {
+    color: var(--ink);
+  }
+
+  /* ── Bone swatch texture ── */
+  .bg-color-card__swatch--texture {
+    background: url('/img/bone-texture.jpg') repeat center / cover;
+    border: 1px solid rgba(10, 10, 10, 0.12);
+  }
+
+  /* ── Placeholders ── */
+  .bg-placeholder__block {
+    background: rgba(245, 241, 232, 0.06);
+    border: 1px dashed rgba(245, 241, 232, 0.15);
+    border-radius: 10px;
+    height: 60px;
+  }
+  .bg-placeholder__block--alt {
+    background: rgba(255, 46, 154, 0.06);
+    border-color: rgba(255, 46, 154, 0.15);
+  }
+  .bg-placeholder__block--tall {
+    height: 280px;
+  }
+  .bg-placeholder__block--logo {
+    height: 160px;
+  }
+  .bg-placeholder__block--light {
+    background: rgba(245, 241, 232, 0.85);
+    border-color: rgba(10, 10, 10, 0.12);
+  }
+  .bg-placeholder__block--pattern {
+    height: 200px;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(245, 241, 232, 0.04) 0px,
+      rgba(245, 241, 232, 0.04) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  }
+  .bg-placeholder__label {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-bottom: 10px;
+  }
+
+  /* ── Brand Personality ── */
+  .bg-traits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--gutter);
+  }
+  .bg-trait {
+    background: var(--surface);
+    border: 1px solid rgba(245, 241, 232, 0.1);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .bg-trait__title {
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  /* ── Voice & Tone ── */
+  .bg-voice {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gutter);
+  }
+  @media (max-width: 640px) {
+    .bg-voice {
+      grid-template-columns: 1fr;
+    }
+  }
+  .bg-voice__heading {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .bg-voice__col--do .bg-voice__heading {
+    color: var(--cyan);
+  }
+  .bg-voice__col--dont .bg-voice__heading {
+    color: var(--magenta);
+  }
+
+  /* ── Logo ── */
+  .bg-logo-hero {
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .bg-logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--gutter);
+  }
+  .bg-logo-variant {
+    text-align: center;
+  }
+  .bg-logo-variant__label {
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 10px;
+  }
+
+  /* ── Colors ── */
+  .bg-colors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--gutter);
+  }
+  .bg-color-card__swatch {
+    height: 120px;
+    border-radius: 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 12px;
+  }
+  .bg-color-card__hex {
+    font-size: 11px;
+    color: var(--bone);
+    opacity: 0.85;
+  }
+  .bg-color-card__hex--dark {
+    color: var(--ink);
+  }
+  .bg-color-card__name {
+    font-weight: 900;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+  .bg-color-card__role {
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  /* ── Typography ── */
+  .bg-type-specimen {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .bg-type-sample__label {
+    font-size: 12px;
+    color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .bg-type-sample__text {
+    overflow-x: auto;
+    word-break: break-all;
+  }
+  .bg-type-hierarchy {
+    border-top: 1px solid rgba(245, 241, 232, 0.1);
+    padding-top: 40px;
+  }
+  .bg-type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding-block: 14px;
+    border-bottom: 1px solid rgba(245, 241, 232, 0.06);
+  }
+  .bg-type-row__tag {
+    font-size: 12px;
+    color: var(--magenta);
+    min-width: 48px;
+  }
+  .bg-type-row__preview {
+    flex: 1;
+  }
+  .bg-type-row__spec {
+    font-size: 11px;
+    opacity: 0.5;
+    white-space: nowrap;
+  }
+
+  /* ── Patterns ── */
+  .bg-patterns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--gutter);
+  }
+  .bg-pattern-card {
+    background: var(--surface);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(245, 241, 232, 0.1);
+  }
+  .bg-pattern-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  /* btn-pixel local (matches index) */
+  .btn-pixel {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 58px;
+    padding-inline: 28px;
+    font-family: var(--font-bit);
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    background: rgba(10, 10, 10, 0.85);
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(
+      0 6px, 6px 6px, 6px 0,
+      calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+      100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) 100%,
+      6px 100%, 6px calc(100% - 6px), 0 calc(100% - 6px)
+    );
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-pixel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--magenta);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.28s steps(6, jump-end);
+  }
+  .btn-pixel:hover {
+    color: var(--ink);
+  }
+  .btn-pixel:hover::before {
+    transform: scaleY(1);
+  }
+  .btn-pixel--sm {
+    height: 38px;
+    font-size: 16px;
+    padding-inline: 16px;
+  }
+
+  /* ── Color Application ── */
+  .bg-color-apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gutter);
+  }
+  .bg-color-app {
+    border-radius: 14px;
+    padding: 24px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .bg-color-app__name {
+    font-size: 13px;
+  }
+
+  /* ── Text Styling ── */
+  .bg-text-styles {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .bg-text-style {
+    padding: 24px;
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid rgba(245, 241, 232, 0.1);
+  }
+  .bg-editorial {
+    border-top: 1px solid rgba(245, 241, 232, 0.1);
+    padding-top: 40px;
+  }
+
+  /* ── Social ── */
+  .bg-social {
+    display: flex;
+    gap: var(--gutter);
+    flex-wrap: wrap;
+  }
+  .bg-social-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .bg-social-card__label {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+  /* ── Merch ── */
+  .bg-merch {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--gutter);
+  }
+  .bg-merch-card {
+    background: var(--surface);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(245, 241, 232, 0.1);
+  }
+  .bg-merch-card__label {
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  /* ── Footer ── */
+  .bg-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 28px;
+    font-size: 12px;
+    opacity: 0.7;
+    border-top: 1px solid rgba(245, 241, 232, 0.1);
+  }
+</style>
