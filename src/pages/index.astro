@@ -1,0 +1,572 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroMaya from '../components/react/HeroMaya.tsx';
+import RevealSurface from '../components/react/RevealSurface.tsx';
+import Sticker6 from '../components/react/Sticker6.tsx';
+
+const lineup = [
+  'Sheila On 7',
+  "Maliq & D'essentials",
+  'SalPribadi',
+  'Nadhif Basalamah',
+  'Barasuara',
+];
+
+const pillars = [
+  {
+    no: '01',
+    title: 'Music Experience',
+    body: 'Panggung musik lintas generasi — dari anthem yang kamu hafal sejak SMA sampai suara baru yang belum sempat kamu temukan.',
+    tone: 'nyata',
+  },
+  {
+    no: '02',
+    title: 'Digital Worlds',
+    body: 'Ruang interaktif dengan cahaya dan laser yang bereaksi saat kamu bergerak. Kamu bukan penonton — kamu input-nya.',
+    tone: 'maya',
+  },
+  {
+    no: '03',
+    title: 'Generative Audio-Visuals',
+    body: 'Suara dan cahaya bermetamorfosis mengikuti cepat-lambat langkahmu. Tidak ada dua pengunjung yang melihat karya yang sama.',
+    tone: 'maya',
+  },
+  {
+    no: '04',
+    title: 'Ruang Kolaborasi',
+    body: 'Wadah kreator dan komunitas untuk berjejaring dan merintis aksi nyata, bersama para pembicara ahli industri kreatif.',
+    tone: 'nyata',
+  },
+];
+---
+
+<Base>
+  <header class="site-header container">
+    <a class="brand" href="/">
+      <span class="brand__mark">6</span>
+      <span class="brand__name">SIXFEST</span>
+    </a>
+    <span class="mono site-header__edition">Edisi 06</span>
+    <a class="btn btn--ticket mono" href="#tickets">Tiket</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__canvas"><HeroMaya client:load /></div>
+      <div class="hero__surface"><RevealSurface client:load /></div>
+      <div class="hero__inner container">
+        <h1 class="hero__title">
+          <span class="hero__nyata">Nyata</span><span class="hero__slash">/</span><span
+            class="hero__maya">MAYA</span
+          >
+        </h1>
+        <p class="hero__tagline mono">Festival kreatif tahunan — musik, dunia digital, dan kolaborasi</p>
+      </div>
+      <div class="hero__foot container mono">
+        <span>&gt; TANCAP GASSS !</span>
+        <span>Jakarta — 2026</span>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        {
+          [0, 1].map(() => (
+            <span class="marquee__seq">
+              {lineup.map((name) => (
+                <span class="marquee__item">
+                  {name} <span class="marquee__star">✶</span>
+                </span>
+              ))}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <section class="pillars container" id="festival">
+      <p class="mono section-label">Apa yang menunggumu</p>
+      <div class="pillars__grid">
+        {
+          pillars.map((p) => (
+            <article class={`pillar pillar--${p.tone}`} data-reveal>
+              <span class="mono pillar__no">{p.no}</span>
+              <h2 class="pillar__title">{p.title}</h2>
+              <p class="pillar__body">{p.body}</p>
+              <span class="mono pillar__tone">{p.tone === 'maya' ? 'MAYA' : 'NYATA'}</span>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="lineup container" id="lineup">
+      <p class="mono section-label">Music Experience</p>
+      {
+        lineup.map((name, i) => (
+          <div class="lineup__row" data-reveal>
+            <span class="mono lineup__no">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="lineup__name">{name}</h3>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="true-exp" id="true-experience">
+      <div class="true-exp__sticky">
+        <div class="true-exp__media">
+          <video
+            src="/video/sixfest2024.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+        <div class="true-exp__overlay container">
+          <h2 class="true-exp__title">True <em>Experience</em></h2>
+          <a class="btn-pixel" href="#">Watch SixFest 2024</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tickets" id="tickets">
+      <div class="container tickets__inner" data-reveal>
+        <h2 class="tickets__title">Masuk ke <em>dua dunia</em> sekaligus</h2>
+        <a class="btn btn--big mono" href="#">Amankan tiketmu</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container mono">
+    <span>SIXFEST © 2026</span>
+    <span>Nyata / Maya</span>
+  </footer>
+
+  <Sticker6 client:idle />
+
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      gsap.from(el, {
+        y: 48,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%' },
+      });
+    });
+
+    // True Experience: video kecil → fullscreen mengikuti scroll (ref: generosity.co.jp)
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: '.true-exp',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0.4,
+        },
+      })
+      .fromTo(
+        '.true-exp__media',
+        { width: '44vw', height: '54vh', borderRadius: 14 },
+        { width: '100vw', height: '100vh', borderRadius: 0, ease: 'none' }
+      );
+
+    gsap.to('.marquee__track', {
+      xPercent: -50,
+      ease: 'none',
+      duration: 24,
+      repeat: -1,
+    });
+  </script>
+</Base>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 20px;
+    mix-blend-mode: difference;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand__mark {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: var(--bone);
+    color: var(--ink);
+    font-family: var(--font-bit);
+    font-size: 24px;
+    border-radius: 8px;
+  }
+  .brand__name {
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+  .site-header__edition {
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding-inline: 22px;
+    border-radius: 14px;
+    border: 1px dashed rgba(245, 241, 232, 0.4);
+    background: rgba(22, 22, 22, 0.7);
+    font-size: 13px;
+    transition: border-color 0.25s, color 0.25s;
+  }
+  .btn:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero__canvas {
+    position: absolute;
+    inset: 0;
+  }
+  .hero__surface {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+  /* difference: gelap di atas permukaan bone, terang di atas dunia maya */
+  .hero__inner {
+    position: relative;
+    text-align: center;
+    z-index: 3;
+    mix-blend-mode: difference;
+  }
+  .hero__title {
+    font-size: clamp(64px, 14vw, 240px);
+    line-height: 0.92;
+    color: var(--bone);
+    text-transform: uppercase;
+  }
+  .hero__nyata {
+    font-family: var(--font-display);
+    font-weight: 900;
+  }
+  .hero__slash {
+    font-family: var(--font-maya);
+    font-weight: 400;
+    padding-inline: 0.06em;
+  }
+  .hero__maya {
+    font-family: var(--font-maya);
+    font-weight: 400;
+    position: relative;
+    text-shadow:
+      calc((var(--mouse-x) - 0.5) * -12px) 0 var(--cyan),
+      calc((var(--mouse-x) - 0.5) * 12px) 0 var(--magenta);
+  }
+  .hero__tagline {
+    margin-top: 28px;
+    font-size: 13px;
+    opacity: 0.85;
+  }
+  .hero__foot {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    z-index: 3;
+    mix-blend-mode: difference;
+  }
+
+  .marquee {
+    overflow: hidden;
+    border-block: 1px solid rgba(245, 241, 232, 0.15);
+    padding-block: 18px;
+    background: var(--ink);
+  }
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    white-space: nowrap;
+  }
+  .marquee__seq {
+    display: flex;
+  }
+  .marquee__item {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(24px, 3.4vw, 48px);
+    text-transform: uppercase;
+    padding-inline: 0.5em;
+  }
+  .marquee__star {
+    color: var(--magenta);
+    padding-left: 0.5em;
+  }
+
+  .section-label {
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 40px;
+  }
+
+  .pillars {
+    padding-block: 140px 100px;
+  }
+  .pillars__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--gutter);
+  }
+  .pillar {
+    background: var(--surface);
+    border: 1px solid rgba(245, 241, 232, 0.1);
+    border-radius: 18px;
+    padding: 28px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pillar--maya .pillar__title {
+    font-family: var(--font-maya);
+    font-weight: 400;
+  }
+  .pillar__no {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+  .pillar__title {
+    font-size: clamp(26px, 2.6vw, 40px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .pillar__body {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+  .pillar__tone {
+    margin-top: auto;
+    font-size: 11px;
+    align-self: flex-start;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px dashed;
+  }
+  .pillar--nyata .pillar__tone {
+    color: var(--magenta);
+  }
+  .pillar--maya .pillar__tone {
+    color: var(--cyan);
+  }
+
+  .lineup {
+    padding-block: 60px 140px;
+  }
+  .lineup__row {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding-block: 22px;
+  }
+  .lineup__row::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--cyan) 0%,
+      var(--magenta) 25%,
+      var(--cyan) 50%,
+      var(--magenta) 75%,
+      var(--cyan) 100%
+    );
+    background-size: 200% 100%;
+    animation: led-strobe 0.7s steps(5, jump-none) infinite;
+  }
+  @keyframes led-strobe {
+    to {
+      background-position: -200% 0;
+    }
+  }
+  .lineup__no {
+    font-size: 13px;
+    color: var(--magenta);
+  }
+  .lineup__name {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 96px);
+    text-transform: uppercase;
+    line-height: 1;
+    transition: color 0.25s;
+  }
+  .lineup__row:hover .lineup__name {
+    color: var(--cyan);
+  }
+
+  .true-exp {
+    height: 300vh;
+    background: var(--ink);
+  }
+  .true-exp__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+  }
+  .true-exp__media {
+    width: 44vw;
+    height: 54vh;
+    overflow: hidden;
+    border-radius: 14px;
+    background: linear-gradient(160deg, #161616, #4a0e4e);
+  }
+  .true-exp__media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .true-exp__overlay {
+    position: absolute;
+    bottom: 7vh;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .true-exp__title {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(44px, 7vw, 120px);
+    line-height: 0.95;
+    color: var(--bone);
+    mix-blend-mode: difference;
+  }
+  .true-exp__title em {
+    font-family: var(--font-maya);
+    font-style: normal;
+    text-transform: none;
+  }
+
+  .btn-pixel {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 58px;
+    padding-inline: 28px;
+    font-family: var(--font-bit);
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    color: var(--bone);
+    background: rgba(10, 10, 10, 0.85);
+    border: none;
+    clip-path: polygon(
+      0 6px, 6px 6px, 6px 0,
+      calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px,
+      100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) 100%,
+      6px 100%, 6px calc(100% - 6px), 0 calc(100% - 6px)
+    );
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-pixel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--magenta);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.28s steps(6, jump-end);
+  }
+  .btn-pixel:hover {
+    color: var(--ink);
+    animation: pixel-glitch 0.32s steps(2, jump-none) 1;
+  }
+  .btn-pixel:hover::before {
+    transform: scaleY(1);
+  }
+  @keyframes pixel-glitch {
+    0% { transform: translate(0, 0); text-shadow: none; }
+    25% { transform: translate(-3px, 1px); text-shadow: 3px 0 var(--cyan); }
+    50% { transform: translate(2px, -1px); text-shadow: -3px 0 var(--cyan); }
+    75% { transform: translate(-1px, 0); text-shadow: 2px 0 var(--violet); }
+    100% { transform: translate(0, 0); text-shadow: none; }
+  }
+
+  .tickets {
+    background: linear-gradient(160deg, #0a0a0a 0%, #4a0e4e 30%, #ff2e9a 60%, #7a2bff 85%, #00e5ff 110%);
+    padding-block: 140px;
+  }
+  .tickets__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+  .tickets__title {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(40px, 6vw, 100px);
+    line-height: 1;
+  }
+  .tickets__title em {
+    font-family: var(--font-maya);
+    font-style: normal;
+  }
+  .btn--big {
+    height: 64px;
+    padding-inline: 40px;
+    font-size: 16px;
+    border-width: 2px;
+    background: rgba(10, 10, 10, 0.85);
+  }
+
+  .site-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 28px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+</style>

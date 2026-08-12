@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'SIXFEST — Nyata / Maya',
+  description =
+    'Festival kreatif tahunan: musik, digital worlds, generative audio-visuals, dan ruang kolaborasi untuk para kreator.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preload" href="/fonts/PPModelSans-Super.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/PPMondwest-Regular.otf" as="font" type="font/otf" crossorigin />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import Lenis from 'lenis';
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({ lerp: 0.1 });
+      // @ts-expect-error — expose for islands (hero canvas reads velocity)
+      window.lenis = lenis;
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      const root = document.documentElement;
+      lenis.on('scroll', () => {
+        root.style.setProperty('--scroll-velocity', String(lenis.velocity));
+      });
+      window.addEventListener('pointermove', (e) => {
+        root.style.setProperty('--mouse-x', String(e.clientX / innerWidth));
+        root.style.setProperty('--mouse-y', String(e.clientY / innerHeight));
+      });
+    </script>
+  </body>
+</html>

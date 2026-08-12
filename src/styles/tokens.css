@@ -1,0 +1,79 @@
+/* SIXFEST — Volt Tropis design tokens */
+
+@font-face {
+  font-family: 'PP Model Sans';
+  src: url('/fonts/PPModelSans-Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Model Sans';
+  src: url('/fonts/PPModelSans-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Model Sans';
+  src: url('/fonts/PPModelSans-Super.otf') format('opentype');
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Model Mono';
+  src: url('/fonts/PPModelMono-Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Model Mono';
+  src: url('/fonts/PPModelMono-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Mondwest';
+  src: url('/fonts/PPMondwest-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP NeueBit';
+  src: url('/fonts/PPNeueBit-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  /* Volt Tropis */
+  --ink: #0a0a0a;
+  --surface: #161616;
+  --bone: #f5f1e8;
+  --magenta: #ff2e9a;
+  --magenta-deep: #b3005e;
+  --cyan: #00e5ff;
+  --violet: #7a2bff;
+  --plum: #4a0e4e;
+
+  /* type */
+  --font-display: 'PP Model Sans', sans-serif;
+  --font-body: 'PP Model Sans', sans-serif;
+  --font-mono: 'PP Model Mono', monospace;
+  --font-maya: 'PP Mondwest', serif;
+  --font-bit: 'PP NeueBit', sans-serif;
+
+  /* layout */
+  --max-columns: 16;
+  --max-width: 1920px;
+  --gutter: clamp(16px, 2vw, 40px);
+
+  /* z-index */
+  --z-preloader: 9999;
+  --z-menu: 9000;
+  --z-sticker: 8000;
+  --z-header: 100;
+
+  /* live vars (JS-driven) */
+  --mouse-x: 0.5;
+  --mouse-y: 0.5;
+  --scroll-velocity: 0;
+}
