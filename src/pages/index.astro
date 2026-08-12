@@ -43,8 +43,7 @@ const pillars = [
 <Base>
   <header class="site-header container">
     <a class="brand" href="/">
-      <span class="brand__mark">6</span>
-      <span class="brand__name">SIXFEST</span>
+      <img class="brand__logo" src="/img/sixfest-alt1-bone.svg" alt="SIXFEST" />
     </a>
     <span class="mono site-header__edition">Edisi 06</span>
     <a class="btn btn--ticket mono" href="#tickets">Tiket</a>
@@ -200,25 +199,9 @@ const pillars = [
     padding-block: 20px;
     mix-blend-mode: difference;
   }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .brand__mark {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    background: var(--bone);
-    color: var(--ink);
-    font-family: var(--font-bit);
-    font-size: 24px;
-    border-radius: 8px;
-  }
-  .brand__name {
-    font-weight: 900;
-    letter-spacing: 0.04em;
+  .brand__logo {
+    height: 28px;
+    width: auto;
   }
   .site-header__edition {
     font-size: 12px;

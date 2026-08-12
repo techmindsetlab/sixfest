@@ -32,8 +32,7 @@ function slugify(s: string) {
 <Base title="Brand Guidelines — SIXFEST">
   <header class="bg-header container">
     <a class="brand" href="/">
-      <span class="brand__mark">6</span>
-      <span class="brand__name">SIXFEST</span>
+      <img class="brand__logo" src="/img/sixfest-alt1-bone.svg" alt="SIXFEST" />
     </a>
     <span class="mono bg-header__ver">V 1.0 — 2026</span>
   </header>
@@ -143,16 +142,34 @@ function slugify(s: string) {
       <div class="container">
         <p class="mono section-label section-label--dark">02.1 — Logo & Symbol</p>
         <div class="bg-section__body">
-          <div class="bg-logo-hero">
-            <div class="bg-placeholder__block bg-placeholder__block--tall bg-placeholder__block--on-bone"></div>
+          <div class="bg-logo-hero bg-logo-hero--on-bone">
+            <img src="/img/sixfest-alt1-dark.svg" alt="SIXFEST Logo" class="bg-logo-hero__img" />
           </div>
           <div class="bg-logo-grid">
-            {['Primary on Dark', 'Primary on Light', 'On Magenta', 'Symbol Only'].map((variant) => (
-              <div class="bg-logo-variant">
-                <div class={`bg-placeholder__block bg-placeholder__block--logo ${variant.includes('Light') ? 'bg-placeholder__block--on-bone' : ''}`}></div>
-                <p class="mono bg-logo-variant__label bg-logo-variant__label--dark">{variant}</p>
+            <div class="bg-logo-variant">
+              <div class="bg-logo-variant__preview bg-logo-variant__preview--dark">
+                <img src="/img/sixfest-alt1-bone.svg" alt="Primary on Dark" />
               </div>
-            ))}
+              <p class="mono bg-logo-variant__label bg-logo-variant__label--dark">Primary on Dark</p>
+            </div>
+            <div class="bg-logo-variant">
+              <div class="bg-logo-variant__preview bg-logo-variant__preview--light">
+                <img src="/img/sixfest-alt1-dark.svg" alt="Primary on Light" />
+              </div>
+              <p class="mono bg-logo-variant__label bg-logo-variant__label--dark">Primary on Light</p>
+            </div>
+            <div class="bg-logo-variant">
+              <div class="bg-logo-variant__preview bg-logo-variant__preview--magenta">
+                <img src="/img/sixfest-logo-on-magenta.svg" alt="On Magenta" />
+              </div>
+              <p class="mono bg-logo-variant__label bg-logo-variant__label--dark">On Magenta</p>
+            </div>
+            <div class="bg-logo-variant">
+              <div class="bg-logo-variant__preview bg-logo-variant__preview--light">
+                <img src="/img/sixfest-mark.svg" alt="Symbol Only" class="bg-logo-variant__mark" />
+              </div>
+              <p class="mono bg-logo-variant__label bg-logo-variant__label--dark">Symbol Only</p>
+            </div>
           </div>
         </div>
       </div>
@@ -396,25 +413,9 @@ function slugify(s: string) {
     padding-block: 20px;
     mix-blend-mode: difference;
   }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .brand__mark {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    background: var(--bone);
-    color: var(--ink);
-    font-family: var(--font-bit);
-    font-size: 24px;
-    border-radius: 8px;
-  }
-  .brand__name {
-    font-weight: 900;
-    letter-spacing: 0.04em;
+  .brand__logo {
+    height: 28px;
+    width: auto;
   }
   .bg-header__ver {
     font-size: 12px;
@@ -657,6 +658,18 @@ function slugify(s: string) {
     border-radius: 14px;
     overflow: hidden;
     background: var(--surface);
+    display: grid;
+    place-items: center;
+    min-height: 280px;
+    padding: 40px;
+  }
+  .bg-logo-hero--on-bone {
+    background: transparent;
+  }
+  .bg-logo-hero__img {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
   }
   .bg-logo-grid {
     display: grid;
@@ -665,6 +678,33 @@ function slugify(s: string) {
   }
   .bg-logo-variant {
     text-align: center;
+  }
+  .bg-logo-variant__preview {
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    padding: 32px 24px;
+    min-height: 160px;
+  }
+  .bg-logo-variant__preview img {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+  }
+  .bg-logo-variant__preview--dark {
+    background: var(--ink);
+  }
+  .bg-logo-variant__preview--light {
+    background: var(--bone);
+  }
+  .bg-logo-variant__preview--magenta {
+    background: #FE2495;
+  }
+  .bg-logo-variant__img--dark-mono {
+    filter: brightness(0);
+  }
+  .bg-logo-variant__mark {
+    max-width: 80px !important;
   }
   .bg-logo-variant__label {
     font-size: 12px;

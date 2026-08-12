@@ -46,7 +46,7 @@
 :root {
   /* Volt Tropis */
   --ink: #0a0a0a;
-  --surface: #161616;
+  --surface: #1b1115;
   --bone: #f5f1e8;
   --magenta: #ff2e9a;
   --magenta-deep: #b3005e;
@@ -57,7 +57,7 @@
   /* type */
   --font-display: 'PP Model Sans', sans-serif;
   --font-body: 'PP Model Sans', sans-serif;
-  --font-mono: 'PP Model Mono', monospace;
+  --font-mono: 'PP Mondwest', serif;
   --font-maya: 'PP Mondwest', serif;
   --font-bit: 'PP NeueBit', sans-serif;
 
