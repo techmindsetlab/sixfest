@@ -55,9 +55,7 @@ const pillars = [
       <div class="hero__surface"><RevealSurface client:load /></div>
       <div class="hero__inner container">
         <h1 class="hero__title">
-          <span class="hero__nyata">Nyata</span><span class="hero__slash">/</span><span
-            class="hero__maya">MAYA</span
-          >
+          <span class="hero__re">Re:</span><span class="hero__connect">connect</span>
         </h1>
         <p class="hero__tagline mono">Festival kreatif tahunan — musik, dunia digital, dan kolaborasi</p>
         <a class="btn-pixel hero__cta" href="/brand-guidelines">Brand Guidelines</a>
@@ -253,24 +251,15 @@ const pillars = [
     font-size: clamp(36px, 14vw, 240px);
     line-height: 0.92;
     color: var(--bone);
-    text-transform: uppercase;
   }
-  .hero__nyata {
+  .hero__re {
     font-family: var(--font-display);
     font-weight: 900;
+    font-style: italic;
   }
-  .hero__slash {
-    font-family: var(--font-maya);
-    font-weight: 400;
-    padding-inline: 0.06em;
-  }
-  .hero__maya {
-    font-family: var(--font-maya);
-    font-weight: 400;
-    position: relative;
-    text-shadow:
-      calc((var(--mouse-x) - 0.5) * -12px) 0 var(--cyan),
-      calc((var(--mouse-x) - 0.5) * 12px) 0 var(--magenta);
+  .hero__connect {
+    font-family: var(--font-bit);
+    font-weight: 700;
   }
   .hero__tagline {
     margin-top: 28px;
